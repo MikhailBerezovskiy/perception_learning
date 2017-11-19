@@ -88,5 +88,5 @@ with open (init.outputcsv, 'w', newline='') as csvfile:
 
     for i in range(10):
         res = init.run(i)
-        print (res)
+        # print (res)
         outwriter.writerow(init.run(i))
