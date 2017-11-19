@@ -1,9 +1,12 @@
+import sys
 import csv
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 
 class perception_learning:
     def __init__(self):
+        self.inputcsv = sys.argv[1]
+        self.outputcsv = sys.argv[2]
         self.D = []
         self.x = []
         self.y = []
@@ -13,7 +16,7 @@ class perception_learning:
         self.b = 0
 
 
-        with open('input_1.csv', newline='') as input_f:
+        with open(self.inputcsv, newline='') as input_f:
             freader = csv.reader(input_f)
             for row in freader:
                 x_j = [int(row[0]), int(row[1])]
@@ -32,7 +35,7 @@ class perception_learning:
 
     def learn(self):
         convergence = False
-        with open('output_1.csv', 'w', newline='') as csvfile:
+        with open(self.outputcsv, 'w', newline='') as csvfile:
             outwriter = csv.writer(csvfile)
             while not convergence:
                 convergence = True
@@ -60,15 +63,15 @@ class perception_learning:
        # self.plotresults()
 
 
-    def line (self, x):
-        if self.w_2 == 0:
-            self.w_2 = 1
-        return - (self.w_1*x + self.b) / (self.w_2) 
+    # def line (self, x):
+    #     if self.w_2 == 0:
+    #         self.w_2 = 1
+    #     return - (self.w_1*x + self.b) / (self.w_2) 
 
-    def plotresults(self):
-        plt.plot([1,15], [self.line(1), self.line(15)])
-        plt.scatter(self.x, self.y, s=None, c=self.col)
-        plt.show()
+    # def plotresults(self):
+    #     plt.plot([1,15], [self.line(1), self.line(15)])
+    #     plt.scatter(self.x, self.y, s=None, c=self.col)
+    #     plt.show()
 
 
 perception_learning_algo = perception_learning()
